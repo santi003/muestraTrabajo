@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Header -->
+    <%- include('partials/head') %>
+    <!-- /Header -->
+
+<body>
+    <div class="contenedor-todo">
+
+        <!-- /HeaderNavbar -->
+        <%- include('partials/headerNavbar') %>
+        <!-- /HeaderNavbar -->
+
+        <main class="main">
+            <!--poner a todo container-->
+            <div class="container">
+                <section class="carrito">
+                    <!--titulo carrito-->
+                    <div class="titulo">
+                       Historial de Compras
+                    </div>
+
+                    <!--Productos-->
+
+                    <% carts.forEach(cart => { %>
+
+                        <% cart.items.forEach(item => { %>
+
+                       <div class="nombre texto">
+
+                                <span><%=new Date(cart.createdAt).toLocaleDateString()%> </span>
+                        </div>
+
+                        <div class="product">
+                            <div class="imagen">
+                                <img src="/img/productos/<%=item.product.img %> " alt="imagen no disponible" class="imagen">
+                            </div>
+                            <div class="precio texto"><%=item.product.name %> </div>
+                            <div class="precio texto">$<%=item.product.price %> </div>
+                        </div> 
+                        
+                        <% }) %>
+    
+                    <% }) %>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="/scripts/scripts.js"></script>
+
+     <!-- footer -->
+	<%- include('partials/footer') %>
+    <!-- /footer -->
+</body>
+
+</html>

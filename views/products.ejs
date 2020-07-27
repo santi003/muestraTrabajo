@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/need/header.css">
+        <link rel="stylesheet" href="/css/products.css">
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <title>Productos | Pakason</title>
+    </head>
+</head>
+<body>
+
+<div class="contenedor-todo">
+
+    <!-- /HeaderNavbar -->
+    <%- include('partials/headerNavbar') %>
+    <!-- /HeaderNavbar -->
+
+    <main class="main">
+        <!--poner a todo container-->
+        <div class="container">
+            <div class="categorias">
+                <div class="titulo-logo">
+                  <h2 class="titulo_categorias">Categorias</h2>
+                  <span class="list-icon"><i class='bx bx-list-ul'></i></span>
+                </div>
+               <% categories.forEach(function(category){ %>
+                   <ul>
+                       <li><a href="/products/<%=category.id%>"><%=category.name%></a></li>
+                   </ul>
+
+                   <% }) %>
+                
+                
+            </div>
+           
+        </div>
+
+    </main>
+</div>
+
+<!-- footer -->
+<%- include('partials/footer') %>
+<!-- /footer -->
+
+<script src="scripts/scripts.js"></script>
+<script src="scripts/categorias.js"></script>
+
+
+</body>
+</html>

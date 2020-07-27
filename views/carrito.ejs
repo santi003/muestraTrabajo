@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Header -->
+    <%- include('partials/head') %>
+    <!-- /Header -->
+
+<body>
+    <div class="contenedor-todo">
+
+        <!-- /HeaderNavbar -->
+        <%- include('partials/headerNavbar') %>
+        <!-- /HeaderNavbar -->
+
+        <main class="main">
+            <!--poner a todo container-->
+            <div class="container">
+                <section class="carrito">
+                    <!--titulo carrito-->
+                    <div class="titulo">
+                        Carrito de compras
+                    </div>
+
+                    <!--Productos-->
+
+                    <% items.forEach(item => { %>
+
+                        <div class="product">
+                            <div class="delete">
+                                <form action="/users/deleteFromCart" method="POST">
+                                <input type="hidden" name="itemId" value="<%=item.id %>">
+                                <button class="button-delete" type="submit"><i class='bx bx-x'></i></button>
+                                </form>
+                            </div>
+    
+                            <div class="imagen">
+                                <img src="/img/productos/<%=item.product.img %> " alt="" class="imagen">
+                            </div>
+                            
+                            <div class="nombre texto">
+                                <span><%=item.product.name %> </span>
+                            </div>
+                            <div class="precio texto"><%= item.product.brand %> </div>
+                            <div class="precio texto">$<%= item.totalPrice %> </div>
+                        </div>     
+    
+                     
+                    <% }) %>
+                </section>
+            </div>
+
+            <div>
+                <article>
+                    <h2 class="h2-total">
+                        Total:$<%=resultado%> 
+                    </h2>
+                </article>
+            </div>
+            <hr>
+            <form action="/users/purchase" method="POST">
+                <button class="button-purchase" type="submit">Terminar compra</button>
+            </form>
+        </main>
+    </div>
+    <script src="/scripts/scripts.js"></script>
+
+     <!-- footer -->
+	<%- include('partials/footer') %>
+    <!-- /footer -->
+</body>
+
+</html>
